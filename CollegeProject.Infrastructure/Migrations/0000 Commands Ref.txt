@@ -1,0 +1,56 @@
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli
+dotnet ef migrations add <Name>
+dotnet ef database update
+
+Add-Migration Afresh
+    Remove-Migration
+Update-Database
+
+Script-Migration
+-------------------------------------------
+dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef
+
+cd .\UnifiedDataHub.Infrastructure\
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\  migrations add Afresh
+    dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations remove
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ database update
+
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations script
+
+Multiple context class
+--------------------------------------------------
+Add-Migration Afresh -Context UnifiedDataHubContext -OutputDir Migrations
+update-database -Context UnifiedDataHubContext
+Script-Migration <prev migration name> -Context UnifiedDataHubContext
+
+
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations add <name> --context UnifiedDataHubContext --output-dir Migrations
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ database update --context UnifiedDataHubContext
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations remove --context UnifiedDataHubContext
+dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations script --context UnifiedDataHubContext -o DeleteScript.sql
+-----------------------------------------------------------------------------------------
+update [UDHPY].[AadhaarDataVault].[AadhaarDataVaultConfigurations] set BaseUrl='http://localhost/ADVAPI/adv-api/1.1.4';
+
+
+-----------------
+ Eshop Reference
+-----------------
+
+***Open a command prompt in the Web folder and execute the following
+commands
+
+dotnet tool update --global dotnet-ef
+
+dotnet restore
+dotnet tool restore
+dotnet ef database update -c catalogcontext -p
+../Infrastructure/Infrastructure.csproj -s Web.csproj
+dotnet ef database update -c appidentitydbcontext -p
+../Infrastructure/Infrastructure.csproj -s Web.csproj
+
+dotnet ef migrations add InitialModel --context catalogcontext -p
+../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations
+dotnet ef migrations add InitialIdentityModel --context
+appidentitydbcontext -p ../Infrastructure/Infrastructure.csproj -s
+Web.csproj -o Identity/Migrations
