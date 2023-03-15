@@ -9,7 +9,8 @@ var connectionString = builder.Configuration.GetConnectionString("CollegeContext
 builder.Services.AddDbContext<CollegeContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDefaultIdentity<CollegeUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<CollegeContext>();
+    .AddEntityFrameworkStores<CollegeContext>()
+    .AddDefaultTokenProviders();
 
 
 builder.Services.AddControllers();
@@ -18,6 +19,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -28,6 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

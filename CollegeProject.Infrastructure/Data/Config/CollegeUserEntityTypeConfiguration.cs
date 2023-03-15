@@ -8,8 +8,8 @@ public class CollegeUserEntityTypeConfiguration : IEntityTypeConfiguration<Colle
 {
     public void Configure(EntityTypeBuilder<CollegeUser> builder)
     {
-        builder.ToTable(b => b.IsTemporal()).HasOne(u => u.Designation).WithMany(d => d.CollegeUser)
+        builder.ToTable(b => b.IsTemporal()).HasOne(u => u.Designation).WithMany(d => d.CollegeUsers)
             .HasForeignKey(u => u.DesignationId);
-        builder.HasOne(u => u.Department).WithMany(d => d.CollegeUser).HasForeignKey(u => u.DepartmentId);
+        builder.HasOne(u => u.Department).WithMany(d => d.CollegeUsers).HasForeignKey(u => u.DepartmentId);
     }
 }

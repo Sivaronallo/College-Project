@@ -9,9 +9,7 @@ public class DesignationEntityTypeConfiguration : IEntityTypeConfiguration<Desig
     public void Configure(EntityTypeBuilder<Designation> builder)
     {
         builder.ToTable(nameof(CollegeContext.Designations), schema: NamedConstants.MasterSchemaName,
-                b => b.IsTemporal())
-            .HasOne(d => d.User)
-            .WithMany(c => c.Designations)
-            .HasForeignKey(d => d.UserId);
+            b => b.IsTemporal()).HasOne(d => d.User).WithMany().HasForeignKey(d => d.UserId);
+        builder.HasMany(d => d.CollegeUsers).WithOne(d => d.Designation).HasForeignKey(d => d.DesignationId);
     }
 }

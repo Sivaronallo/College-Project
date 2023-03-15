@@ -1,0 +1,18 @@
+ALTER TABLE Master.Departments SET (SYSTEM_VERSIONING = OFF);
+ALTER TABLE Master.Departments NOCHECK CONSTRAINT FK_Departments_AspNetUsers_UserId;
+
+Insert into Master.Departments values(2,'ComputerScience', 'CSC', NEWID(),'qwer-123',GETDATE())
+Insert into Master.Departments values(0,'CollegeUser', 'CU', NEWID(),'qwer-123',GETDATE())
+
+ALTER TABLE Master.Departments CHECK CONSTRAINT FK_Departments_AspNetUsers_UserId;
+ALTER TABLE Master.Departments SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = Master.DepartmentsHistory));
+
+
+ALTER TABLE Master.Designations SET (SYSTEM_VERSIONING = OFF);
+ALTER TABLE Master.Designations NOCHECK CONSTRAINT FK_Designations_AspNetUsers_UserId
+
+Insert into Master.Designations values(1,'Principal', '1', NEWID(),'qwer-123',GETDATE())
+Insert into Master.Designations values(0,'CollegeUser', '0', NEWID(),'qwer-123',GETDATE())
+
+ALTER TABLE Master.Designations CHECK CONSTRAINT FK_Designations_AspNetUsers_UserId
+ALTER TABLE Master.Designations SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = Master.DesignationHistory));

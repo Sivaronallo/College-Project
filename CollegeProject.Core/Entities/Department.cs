@@ -26,5 +26,5 @@ public class Department : IAggregateRoot
     public DateTime Timestamp { get; set; }
 
     public CollegeUser User { get; set; }
-    public List<CollegeUser> CollegeUser { get; set; }
+    public ICollection<CollegeUser> CollegeUsers { get; set; }
 }

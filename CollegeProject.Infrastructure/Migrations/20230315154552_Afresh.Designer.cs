@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CollegeProject.Infrastructure.Migrations
 {
     [DbContext(typeof(CollegeContext))]
-    [Migration("20230311061510_Afresh")]
+    [Migration("20230315154552_Afresh")]
     partial class Afresh
     {
         /// <inheritdoc />
@@ -377,13 +377,13 @@ namespace CollegeProject.Infrastructure.Migrations
             modelBuilder.Entity("CollegeProject.Core.Entities.CollegeUser", b =>
                 {
                     b.HasOne("CollegeProject.Core.Entities.Department", "Department")
-                        .WithMany("CollegeUser")
+                        .WithMany("CollegeUsers")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CollegeProject.Core.Entities.Designation", "Designation")
-                        .WithMany("CollegeUser")
+                        .WithMany("CollegeUsers")
                         .HasForeignKey("DesignationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -396,7 +396,7 @@ namespace CollegeProject.Infrastructure.Migrations
             modelBuilder.Entity("CollegeProject.Core.Entities.Department", b =>
                 {
                     b.HasOne("CollegeProject.Core.Entities.CollegeUser", "User")
-                        .WithMany("Departments")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -405,7 +405,7 @@ namespace CollegeProject.Infrastructure.Migrations
             modelBuilder.Entity("CollegeProject.Core.Entities.Designation", b =>
                 {
                     b.HasOne("CollegeProject.Core.Entities.CollegeUser", "User")
-                        .WithMany("Designations")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -462,21 +462,14 @@ namespace CollegeProject.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CollegeProject.Core.Entities.CollegeUser", b =>
-                {
-                    b.Navigation("Departments");
-
-                    b.Navigation("Designations");
-                });
-
             modelBuilder.Entity("CollegeProject.Core.Entities.Department", b =>
                 {
-                    b.Navigation("CollegeUser");
+                    b.Navigation("CollegeUsers");
                 });
 
             modelBuilder.Entity("CollegeProject.Core.Entities.Designation", b =>
                 {
-                    b.Navigation("CollegeUser");
+                    b.Navigation("CollegeUsers");
                 });
 #pragma warning restore 612, 618
         }

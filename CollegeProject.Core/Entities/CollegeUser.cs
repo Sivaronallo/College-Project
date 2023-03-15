@@ -20,8 +20,5 @@ namespace CollegeProject.Core.Entities
         public Designation Designation { get; set; }
         public Department Department { get; set; }
         public string DisplayName => $"{ActualName} ({PhoneNumber})";
-
-        public List<Designation> Designations { get; set; }
-        public List<Department> Departments { get; set; }
     }
 }
