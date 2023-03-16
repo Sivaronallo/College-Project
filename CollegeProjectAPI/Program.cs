@@ -1,3 +1,4 @@
+using CollegeProject.Api.Configuration;
 using CollegeProject.Core.Entities;
 using CollegeProject.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +13,10 @@ builder.Services.AddDefaultIdentity<CollegeUser>(options => options.SignIn.Requi
     .AddEntityFrameworkStores<CollegeContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.Configure<CollegeSetting>(
+    builder.Configuration.GetSection("Settings"));
 
+builder.Services.AddCoreServices();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

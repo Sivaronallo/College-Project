@@ -11,24 +11,24 @@ Script-Migration
 dotnet tool install --global dotnet-ef
 dotnet tool update --global dotnet-ef
 
-cd .\UnifiedDataHub.Infrastructure\
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\  migrations add Afresh
-    dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations remove
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ database update
+cd .\College.Infrastructure\
+dotnet ef --startup-project ..\College.WebUi\  migrations add Afresh
+    dotnet ef --startup-project ..\College.WebUi\ migrations remove
+dotnet ef --startup-project ..\College.WebUi\ database update
 
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations script
+dotnet ef --startup-project ..\College.WebUi\ migrations script
 
 Multiple context class
 --------------------------------------------------
-Add-Migration Afresh -Context UnifiedDataHubContext -OutputDir Migrations
-update-database -Context UnifiedDataHubContext
-Script-Migration <prev migration name> -Context UnifiedDataHubContext
+Add-Migration Afresh -Context CollegeContext -OutputDir Migrations
+update-database -Context CollegeContext
+Script-Migration <prev migration name> -Context CollegeContext
 
 
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations add <name> --context UnifiedDataHubContext --output-dir Migrations
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ database update --context UnifiedDataHubContext
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations remove --context UnifiedDataHubContext
-dotnet ef --startup-project ..\UnifiedDataHub.WebUi\ migrations script --context UnifiedDataHubContext -o DeleteScript.sql
+dotnet ef --startup-project ..\College.WebUi\ migrations add <name> --context CollegeContext --output-dir Migrations
+dotnet ef --startup-project ..\College.WebUi\ database update --context CollegeContext
+dotnet ef --startup-project ..\College.WebUi\ migrations remove --context CollegeContext
+dotnet ef --startup-project ..\College.WebUi\ migrations script --context CollegeContext -o DeleteScript.sql
 -----------------------------------------------------------------------------------------
 update [UDHPY].[AadhaarDataVault].[AadhaarDataVaultConfigurations] set BaseUrl='http://localhost/ADVAPI/adv-api/1.1.4';
 

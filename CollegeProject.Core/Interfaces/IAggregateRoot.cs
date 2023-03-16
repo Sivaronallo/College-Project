@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CollegeProject.Core.Interfaces;
 
-namespace CollegeProject.Core.Interfaces
+public interface IAggregateRoot
 {
-    public interface IAggregateRoot
-    {
-    }
 }
