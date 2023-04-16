@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CollegeProject.Api.ViewModel;
+namespace CollegeProject.Api.Model;
 
-public class RegisterViewModel
+public class RegisterModel
 {
     [Required]
     [Display(Name = "User name")]

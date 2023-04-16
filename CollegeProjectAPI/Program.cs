@@ -1,4 +1,6 @@
+using CollegeProject.Api.Authorization;
 using CollegeProject.Api.Configuration;
+using CollegeProject.Api.Helpers;
 using CollegeProject.Core.Entities;
 using CollegeProject.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
@@ -37,6 +39,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 

@@ -14,6 +14,8 @@ public static class ConfigureServices
         services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
         services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
+        services.AddScoped<IJwtUtils, JwtUtilsRepository>();
+        services.AddScoped<IUserService, UserService>();
         return services;
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using CollegeProject.Api.ViewModel;
+using CollegeProject.Api.Model;
 using CollegeProject.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -28,7 +28,7 @@ namespace CollegeProject.Api.Controllers
 
         // POST api/<RegisterController>
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             if (!ModelState.IsValid)
             {
