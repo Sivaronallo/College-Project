@@ -59,17 +59,5 @@ namespace CollegeProject.Api.Controllers
             }                       
             return BadRequest(result.Errors);
         }
-
-        // PUT api/<RegisterController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<RegisterController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

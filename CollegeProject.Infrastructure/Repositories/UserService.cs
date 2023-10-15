@@ -9,8 +9,8 @@ namespace CollegeProject.Infrastructure.Repositories;
 
 public class UserService : IUserService
 {
-    private CollegeContext _context;
-    private IJwtUtils _jwtUtils;
+    private readonly CollegeContext _context;
+    private readonly IJwtUtils _jwtUtils;
     private readonly CollegeSetting _settings;
    
 
